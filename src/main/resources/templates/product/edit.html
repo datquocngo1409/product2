@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+</head>
+<body>
+<h1>Edit a Product</h1>
+<a href="/products">Back to List</a>
+<th:block th:if="${mess}">
+    <span th:text="${mess}"></span>
+</th:block>
+<form th:action="@{/edit-product/__${product.id}__}" th:object="${product}" th:method="post">
+    <table>
+        <tr>
+            <td>Code:               </td>
+            <td><input type="text" th:field="${product.code}"></td>
+        </tr>
+        <tr>
+            <td>Name:               </td>
+            <td><input type="text" th:field="${product.name}"></td>
+        </tr>
+        <tr>
+            <td>Price:              </td>
+            <td><input type="text" th:field="${product.price}"></td>
+        </tr>
+        <tr>
+            <td>Quantity:          </td>
+            <td><input type="text" th:field="${product.quantity}"></td>
+        </tr>
+        <tr>
+            <td>Description:       </td>
+            <td><input type="text" th:field="${product.description}"></td>
+        </tr>
+        <tr>
+            <td>Discount:           </td>
+            <td><input type="text" th:field="${product.discount}"></td>
+        </tr>
+        <tr>
+            <td>Color:              </td>
+            <td><input type="text" th:field="${product.color}"></td>
+        </tr>
+        <tr>
+            <td>Status:             </td>
+            <td><input type="text" th:field="${product.status}"></td>
+        </tr>
+        <tr>
+            <td>Distributor:        </td>
+            <td><input type="text" th:field="${product.distributor}"></td>
+        </tr>
+        <tr>
+            <td>Category:           </td>
+            <td>
+                <select th:field="${product.category}">
+                    <option th:each="c : ${categories}" th:value="${c.id}" th:text="${c.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" th:value="Edit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
